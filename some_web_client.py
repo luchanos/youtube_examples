@@ -19,5 +19,5 @@ class SomeResourceClient:
         return datetime.fromtimestamp(last_action_time - time_diff)
 
 
-some_resource_client = SomeResourceClient("https://www.avito.ru/")
+some_resource_client = SomeResourceClient("https://www.avito.ru")
 print(some_resource_client.get_user_last_action_time(177068588))
