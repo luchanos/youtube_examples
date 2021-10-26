@@ -1,4 +1,4 @@
-from some_web_client import SomeResourceClient
+from materials.some_web_client import SomeResourceClient
 import responses
 from datetime import datetime
 import pytest
