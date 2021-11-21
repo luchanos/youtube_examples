@@ -8,7 +8,8 @@ class Matryoshka:
 
     def __new__(cls, *args, **kwargs):
         print(f"Запускается метод __new__ и аллоцирует память для хранения экземпляра типа {cls}")
-        return super().__new__(cls)
+        res = super().__new__(cls)
+        return res
 
     def say_hello(self):
         print(f"Hello, <username> from {self.name}!")
@@ -18,6 +19,8 @@ class Matryoshka:
 
 
 # собираем экземпляр класса Матрёшки
-print(Matryoshka)
-c = Matryoshka("Red", "Blue", "Kate")
+# print(Matryoshka)
+c = Matryoshka("red", "blue", "Kate")
+b = Matryoshka("black", "gray", "Mila")
 print(c)
+print(b)
