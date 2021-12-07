@@ -6,24 +6,15 @@ class Vector:
 
     def __add__(self, other):
         """сложение вектора с вектором"""
-        new_x = self.x + other.x
-        new_y = self.y + other.y
-        result_object = Vector(new_x, new_y)
-        return result_object
+        return Vector(self.x + other.x, self.y + other.y)
 
     def __sub__(self, other):
         """вычитание из вектора вектор"""
-        new_x = self.x - other.x
-        new_y = self.y - other.y
-        result_object = Vector(new_x, new_y)
-        return result_object
+        return Vector(self.x - other.x, self.y - other.y)
 
     def __mul__(self, other):
         """умножение на число"""
-        new_x = self.x * other
-        new_y = self.y * other
-        result_object = Vector(new_x, new_y)
-        return result_object
+        return Vector(self.x * other, self.y * other)
 
     def __mod__(self, other):
         """остаток от деления на число"""
