@@ -23,7 +23,7 @@ def f():
     print(f"f: {CNT} from", os.getpid())
 
 
-if __name__ == "__main__":  # выполнится только в главном процессе
+if __name__ == "__main__":
     time.sleep(1)
     print(f"{os.getpid()} ENTERED!")
     p = Process(target=f, args=())  # создаём объект, в котором хотим запустить функцию с параметрами
