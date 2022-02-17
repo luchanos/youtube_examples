@@ -21,6 +21,6 @@ class Solution:
 @pytest.mark.parametrize("input_value, expected", [(["flower", "flow", "flight"], "fl"),
                                                    (["dog", "racecar", "car"], ""),
                                                    (["cir", "car"], "c")])
-def test_palidrome(input_value, expected):
+def test_longest_common_prefix(input_value, expected):
     sol = Solution()
     assert sol.longestCommonPrefix(input_value) == expected
