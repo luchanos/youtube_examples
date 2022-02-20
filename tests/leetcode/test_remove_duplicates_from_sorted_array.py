@@ -29,6 +29,6 @@ class Solution:
     ([1, ], [1, ]),
     ([1, 2, 3, 4], [1, 2, 3, 4])
 ])
-def test_is_valid(input_value, expected):
+def test_remove_duplicates(input_value, expected):
     sol = Solution()
     assert sol.removeDuplicates(input_value) == expected
