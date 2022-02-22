@@ -18,6 +18,13 @@ def laborator():
     print(os.getpid(), result)
 
 
+# if __name__ == "__main__":
+#     # пул процессов удобен для того, чтобы одну и ту же функцию вызвать
+#     # в нескольких потоках с разными аргументами
+#     with multiprocessing.Pool(4) as pool:
+#         pool.map(laborator, (1, 2, 3))
+
+
 # простой синхронный запуск - 0:00:20.334723
 # if __name__ == "__main__":
 #     start = datetime.now()
@@ -27,26 +34,25 @@ def laborator():
 
 
 # запуск с процессами - 0:00:09.633758
-if __name__ == "__main__":
-    start = datetime.now()
-    p = Process(target=laborator)
-    p_1 = Process(target=laborator)
-    p.start()
-    p_1.start()
-    p.join()  # не пойдём дальше до тех пор, пока p не завершится
-    time.sleep(10)
-    print("p завершился")
-    p_1.join()  # не пойдём дальше до тех пор, пока p_1 не завершится
-    print("p_1 завершился")
-    print(datetime.now() - start)
+# if __name__ == "__main__":
+#     start = datetime.now()
+#     p = Process(target=laborator)
+#     p_1 = Process(target=laborator)
+#     p.start()
+#     p_1.start()
+#     p.join()  # не пойдём дальше до тех пор, пока p не завершится
+#     print("p завершился")
+#     p_1.join()  # не пойдём дальше до тех пор, пока p_1 не завершится
+#     print("p_1 завершился")
+#     print(datetime.now() - start)
 
 
 # запуск с процессами + рефакторинговый лайфхак - 0:00:15.565276
-# if __name__ == "__main__":
-#     start = datetime.now()
-#     p_list = [Process(target=laborator) for _ in range(2)]
-#     for p in p_list:
-#         p.start()
-#     for p in p_list:  # без этого основной поток завершит работу, но это не помешает работать дочерним
-#         p.join()
-#     print(datetime.now() - start)
+if __name__ == "__main__":
+    start = datetime.now()
+    p_list = [Process(target=laborator) for _ in range(2)]
+    for p in p_list:
+        p.start()
+    for p in p_list:  # без этого основной поток завершит работу, но это не помешает работать дочерним
+        p.join()
+    print(datetime.now() - start)
