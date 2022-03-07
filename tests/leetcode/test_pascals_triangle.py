@@ -31,6 +31,6 @@ class Solution:
 
 @pytest.mark.parametrize("input_value, expected", [(5, [[1], [1, 1], [1, 2, 1], [1, 3, 3, 1], [1, 4, 6, 4, 1]]),
                                                    (1, [[1]])])
-def test_palidrome(input_value, expected):
+def test_generate(input_value, expected):
     sol = Solution()
     assert sol.generate(input_value) == expected
