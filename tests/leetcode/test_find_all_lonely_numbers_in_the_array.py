@@ -38,9 +38,7 @@ class Solution:
 
 @pytest.mark.parametrize("input_value, expected", [([69, 45, 69], [45]),
                                                    ([1, 3, 5, 3], [1, 5]),
-                                                   ([10, 6, 5, 8], [8, 10]),
-
-                         ])
+                                                   ([10, 6, 5, 8], [8, 10])])
 def test_find_lonely(input_value, expected):
     sol = Solution()
     assert sol.findLonely(input_value) == expected
