@@ -4,7 +4,6 @@ https://leetcode.com/problems/middle-of-the-linked-list/
 
 from typing import Optional
 import pytest
-from functools import reduce
 
 
 # Definition for singly-linked list.
