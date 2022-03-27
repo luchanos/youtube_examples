@@ -1,5 +1,5 @@
 """
-https://leetcode.com/problems/palindrome-linked-list/
+https://leetcode.com/problems/remove-linked-list-elements/submissions/
 """
 from typing import Optional
 import pytest
