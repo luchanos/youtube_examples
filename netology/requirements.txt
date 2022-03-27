@@ -1,0 +1,2 @@
+python3-nmap==1.5.1
+pywifi==1.1.12
