@@ -7,6 +7,11 @@ import pytest
 
 class Solution:
     def isPalindrome(self, x: int) -> bool:
+        """
+        Вычисляет является ли число палиндромом
+        :param x:
+        :return:
+        """
         c = 1
         c += 1
         print(c)
