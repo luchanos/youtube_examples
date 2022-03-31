@@ -12,9 +12,6 @@ class Solution:
         :param x:
         :return:
         """
-        c = 1
-        c += 1
-        print(c)
         return str(x) == str(x)[::-1]
 
 
