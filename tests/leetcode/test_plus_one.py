@@ -16,6 +16,8 @@ class Solution:
         for cnt in range(len(digits)):
             num += digits[cnt] * 10 ** (len(digits) - cnt - 1)
         num += 1
+        c = 1
+        c += 1
         return [int(x) for x in str(num)]
 
 
