@@ -34,3 +34,6 @@ iv = cipher_text[:BS]
 cipher = AES.new(key, AES.MODE_CBC, iv)
 plain_text = unpad(cipher.decrypt(cipher_text[BS:]))
 print("Plain text:", plain_text)
+
+
+# обычно это не заучивают, а гуглят и смотрят бест практисез
