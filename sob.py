@@ -9,7 +9,8 @@ class TextFile:
             self.text_data += text
             self.cursor += len(text)
         else:
-            self.text_data = self.text_data[:self.cursor] + text + self.text_data[self.cursor:]
+            self.text_data = self.text_data[:self.cursor] +\
+                             text + self.text_data[self.cursor:]
 
     def delete_text(self):
         str_for_work_lst = list(self.text_data)
@@ -18,7 +19,8 @@ class TextFile:
             self.text_data = "".join(str_for_work_lst)
 
     def move_cursor(self, move_steps):
-        self.cursor = int(move_steps) if int(move_steps) <= len(self.text_data) else len(self.text_data)
+        self.cursor = int(move_steps) if \
+            int(move_steps) <= len(self.text_data) else len(self.text_data)
 
     def __str__(self):
         return self.text_data
