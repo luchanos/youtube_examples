@@ -1,70 +1,101 @@
-"""
-История одного бизнеса:
+from abc import ABC, abstractmethod
 
-мы решили открыть лавочку, которая авторизована для того, чтобы продавать билеты на автобус. Есть БД
-в которую пишут все.
 
-что означает продать билет? это значит совершить определенный набор действий:
-    - осуществить запись в базу
-    - осуществить отправку электронного билета на почту
-    - осуществить отправку смс на телефон
+class Ticket(ABC):
+    @abstractmethod
+    def buy(self):
+        pass
+
+    @abstractmethod
+    def to_use(self):
+        pass
+
+
+class AeroTicket(Ticket):
+    def to_use(self):
+        print("Билет на самолет использован")
+
+    def buy(self):
+        print("Билет на самолет куплен")
+
+
+class BusTicket(Ticket):
+    def to_use(self):
+        print("Билет на автобус использован")
+
+    def buy(self):
+        print("Билет на автобус куплен")
+
+
+class TicketBuyer:
+    """Покупатель разных билетов"""
+
+    menu_msg = """
+Какой билет вы желаете купить?
+[1] Самолет
+[2] Автобус
 """
+    @staticmethod
+    def write_buying_data_to_db(self):
+        print()
+
+    def __call__(self, *args, **kwargs):
+        ch = input(self.menu_msg)
+        ticket = None
+        if ch == "1":
+            ticket = AeroTicket()
+        elif ch == "2":
+            ticket = BusTicket()
+        if ticket:
+            ticket.buy()
+
+
+class TicketUser:
+    def __call__(self, *args, **kwargs):
+        print("Вы погасили билет")
 
 
 class Application:
-    def __init__(self, name):
+    menu_msg = """
+Вас приветствует приложение luchanos!
+Выберите, что желаете сделать:
+[1] Купить билет
+[2] Погасить билет
+"""
+
+    def __init__(self, name, *args, **kwargs):
         self.name = name
+        self.ticket_buyer: TicketBuyer = None
+        self.ticket_user: TicketUser = None
+        self.db_clent: DbClient = None
+
+    def run(self):
+        ch = input(self.menu_msg)
+        if ch == "1":
+            self.ticket_buyer()
+        elif ch == "2":
+            self.ticket_user()
 
 
-class Ticket:
-    def send_ticket_to_email(self):
-        print("Отправляю на почту билет")
-
-    def send_sms(self):
-        print("Отправляю смс")
-
-    def __call__(self, *args, **kwargs):
-        self.send_ticket_to_email()
-        self.send_sms()
+def setup_ticket_buyer(app):
+    ticket_buyer = TicketBuyer()
+    app.ticket_buyer = ticket_buyer
+    return app
 
 
-class BusTicketSeller(Ticket):
-    def write_to_db(self):
-        print("Пишу в базу")
-
-    def __call__(self, *args, **kwargs):
-        self.write_to_db()
-        super().__call__(*args, **kwargs)
+def setup_ticket_user(app):
+    ticket_user = TicketUser()
+    app.ticket_user = ticket_user
+    return app
 
 
-class AviaTicketSeller(Ticket):
-    def send_data_to_aviacompany(self):
-        print("Отправляю данные в авиакомпанию")
-
-    def validate_passport(self):
-        print("Валидирую паспорт")
-
-    def __call__(self, *args, **kwargs):
-        self.validate_passport()
-        self.send_data_to_aviacompany()
-        super().__call__(*args, **kwargs)
-
-
-class TicketRouter:
-    MAPPER = {
-        "avia": AviaTicketSeller,
-        "bus": BusTicketSeller
-    }
-
-    def __call__(self, *args, **kwargs):
-        ch = input("Введите bus или avia: ")
-        ticket_buyer = self.MAPPER[ch]()
-        ticket_buyer()
+def setup_application_resources(app: Application):
+    setup_ticket_buyer(app)
+    setup_ticket_user(app)
+    return app
 
 
 if __name__ == "__main__":
-    app = Application("my_shiny_application")
-
-    ticket_router = TicketRouter()
-    app.ticket_seller = ticket_router
-    app.ticket_seller()
+    app = Application(__name__)
+    setup_application_resources(app)
+    app.run()
