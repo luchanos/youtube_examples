@@ -35,9 +35,10 @@ class TicketBuyer:
 [1] Самолет
 [2] Автобус
 """
+
     @staticmethod
-    def write_buying_data_to_db(self):
-        print()
+    def write_buying_data_to_db():
+        print("Пишу данные в БД")
 
     def __call__(self, *args, **kwargs):
         ch = input(self.menu_msg)
@@ -67,7 +68,6 @@ class Application:
         self.name = name
         self.ticket_buyer: TicketBuyer = None
         self.ticket_user: TicketUser = None
-        self.db_clent: DbClient = None
 
     def run(self):
         ch = input(self.menu_msg)
