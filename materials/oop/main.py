@@ -10,6 +10,10 @@ class Ticket(ABC):
     def to_use(self):
         pass
 
+# какой-то комментарий
+# ещё один комментарий
+# последний комментарий
+
 
 class AeroTicket(Ticket):
     def to_use(self):
