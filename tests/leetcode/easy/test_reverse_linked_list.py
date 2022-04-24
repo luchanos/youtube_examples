@@ -5,12 +5,7 @@ https://leetcode.com/problems/reverse-linked-list/submissions/
 from typing import List, Optional
 import pytest
 
-
-# Definition for singly-linked list.
-class ListNode:
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = next
+from tests.leetcode.easy.utils import ListNode
 
 
 class Solution:

@@ -4,11 +4,7 @@ https://leetcode.com/problems/palindrome-linked-list/
 from typing import Optional
 import pytest
 
-
-class ListNode:
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = next
+from tests.leetcode.easy.utils import ListNode
 
 
 class Solution:
