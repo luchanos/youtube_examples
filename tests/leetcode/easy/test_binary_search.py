@@ -1,7 +1,6 @@
 """
 https://leetcode.com/problems/binary-search/
 """
-# todo luchanos перерешать самостоятельно
 
 from typing import List
 import pytest
