@@ -1,4 +1,4 @@
-from multiprocessing import Process, Lock
+from multiprocessing import Process, Lock, RLock
 from time import sleep
 from random import random
 
