@@ -41,3 +41,46 @@ if __name__ == '__main__':
 
     # exiting the 'with'-block has stopped the pool
     print("Now the pool is closed and no longer available")
+
+
+
+import multiprocessing as mp
+import os
+import time
+
+
+def foo_pool(x):
+    print("Sleep!")
+    time.sleep(.2)
+    return x*x
+
+
+result_list = []
+def log_result(result):
+    # This is called whenever foo_pool(i) returns a result.
+    # result_list is modified only by the main process, not the pool workers.
+    result_list.append(result)
+
+
+def apply_async_with_callback():
+    # with mp.Pool(11) as pool:
+    #     for i in range(10):
+    #         res = pool.apply_async(foo_pool, args=(i, ), callback=log_result)
+    #         print(res.get())
+    # print(result_list)
+
+    with mp.Pool(1) as pool:
+        multiple_results = [pool.apply_async(foo_pool, args=(i, ), callback=log_result) for i in range(4)]
+        print([res.get(timeout=1) for res in multiple_results])
+
+    # pool = mp.Pool(11)
+    # for i in range(10):
+    #     pool.apply_async(foo_pool, args=(i, ), callback=log_result)
+    # pool.close()
+    # pool.join()
+    # print(result_list)
+
+
+if __name__ == '' \
+               '__main__':
+    apply_async_with_callback()

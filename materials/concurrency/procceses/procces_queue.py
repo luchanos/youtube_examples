@@ -1,5 +1,4 @@
-import time
-from multiprocessing import Queue, Pipe, Pool
+from multiprocessing import Queue, Pipe, Process
 from time import sleep
 
 
@@ -13,14 +12,12 @@ def worker(a: int, q: Queue):
 
 
 def pipe_worker(p: Pipe):
-    some_data = input("Введите данные: ")
+    some_data = 100500
     p.send(some_data)
 
 
-def sleepy_printer(a):
-    print("I'm sleeping")
-    time.sleep(30)
-    print(a)
+def pipe_worker_2(p: Pipe):
+    print(p.recv())
 
 
 def f(a):
@@ -28,6 +25,7 @@ def f(a):
 
 
 if __name__ == "__main__":
+    # работаем с очередями
     # q = Queue(maxsize=100)
     # p = Process(target=worker, args=(1, q))
     # p.start()
@@ -41,7 +39,14 @@ if __name__ == "__main__":
     # print("27 result", q.get())
     # print("28 result", q.get())
     # print("29 result", q.get())
-    # parent_pipe, child_pipe = Pipe()
-    # pipe_worker(child_pipe)
-    # print("Информация из дочернего процесса:", parent_pipe.recv())
-    pass
+
+    # работаем с конвейерами
+    parent_pipe, child_pipe = Pipe(duplex=True)
+    p = Process(target=pipe_worker, args=(child_pipe, ))
+    p.start()
+    p1 = Process(target=pipe_worker_2, args=(child_pipe, ))
+    p1.start()
+    print("Информация из дочернего процесса:", parent_pipe.recv())
+    parent_pipe.send("Информация из главного процесса")
+    p.join()
+    p1.join()
