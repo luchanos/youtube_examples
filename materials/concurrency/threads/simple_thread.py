@@ -6,13 +6,18 @@ import os
 from datetime import datetime
 
 
-def func_sleep():
+def func_heavy_math():
     """Функция с тяжелыми вычислениями"""
     cnt = 0
     # какая-то математическая тяжёлая операция
-    for _ in range(500_000_00):
+    for _ in range(500_000_000):
         cnt += 1
     print(f"Это поток {threading.get_ident()} из процесса {os.getpid()}")
+
+
+def func_sleep():
+    """Функция с имитацией I/O bound операции"""
+    time.sleep(1)
 
 
 start_time = datetime.now()
