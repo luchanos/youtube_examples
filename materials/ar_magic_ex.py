@@ -42,8 +42,29 @@ class Vector:
         return f"x: {self.x}, y: {self.y}"
 
 
-ex_1 = Vector(1, 2)
-ex_2 = Vector(3, 4)
-print(ex_1 % 2)
+# ex_1 = Vector(1, 2)
+# ex_2 = Vector(3, 4)
+# print(ex_1 % 2)
+#
+# print(ex_1 + ex_2 + ex_2)
 
-print(ex_1 + ex_2 + ex_2)
+class Example:
+    def __init__(self):
+        self.a = None
+
+    def __setitem__(self, key, value):
+        if key == "a":
+            self.a = value
+
+    def __getitem__(self, item):
+        if item == "a":
+            return self.a
+
+    def __str__(self):
+        return str(self.a)
+
+
+e = Example()
+e["a"] = 1
+print(e)
+print(e["a"])

@@ -3,10 +3,10 @@ import hashlib
 text = "Секретная информация"
 
 # с помощью md5 (устаревшее)
-# for i in text:
-#     md5 = hashlib.md5(i.encode())
-#
-#     print(i, ":", md5.hexdigest())  # размер хэша всегда будет одинаковым
+for i in text.split():
+    md5 = hashlib.md5(i.encode())
+
+    print(i, ":", md5.hexdigest())  # размер хэша всегда будет одинаковым
 
 # неустойчив, ломается радужными таблицами. поэтому придумали "солить"
 

@@ -1,39 +1,15 @@
 # -*- coding: utf-8 -*-
 
-plain_text = "Секретная информация 123123123123"
-key = 10  # это наш закрытый ключ, который надо передавать по защищенному каналу
-
-alphabet = "АБВГДЕЁЖЗИКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзиклмнопрстуфхцчшщъыьэюя привет! привет!"
-ciphertext = ""
-
-for symbol in plain_text:
-    if symbol in alphabet:  # только если символ есть в нашем алфавите. если нету - не шифруем
-        num = alphabet.find(symbol)
-        num = num + key
-
-        if num >= len(alphabet):
-            num = num - len(alphabet)
-
-        ciphertext = ciphertext + alphabet[num]
-
-    else:
-        ciphertext = ciphertext + symbol
-
-print(ciphertext)
-
-
-# Дешифрация
-
-# plain_text = "ЫпфъпьчкЗИучюшъцк уЗ"
-# key = 10
+# plain_text = "Секретная информация и ещё слова dsdsdsdsdsdsd"
+# key = 1  # это наш закрытый ключ, который надо передавать по защищенному каналу
 #
-# alphabet = "АБВГДЕЁЖЗИКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзиклмнопрстуфхцчшщъыьэюя "
+# alphabet = "АБВГДЕЁЖЗИКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзиклмнопрстуфхцчшщъыьэюяsd"
 # ciphertext = ""
 #
 # for symbol in plain_text:
-#     if symbol in alphabet:
+#     if symbol in alphabet:  # только если символ есть в нашем алфавите. если нету - не шифруем
 #         num = alphabet.find(symbol)
-#         num = num - key
+#         num = num + key
 #
 #         if num >= len(alphabet):
 #             num = num - len(alphabet)
@@ -44,6 +20,30 @@ print(ciphertext)
 #         ciphertext = ciphertext + symbol
 #
 # print(ciphertext)
+
+
+# Дешифрация
+
+plain_text = "ЫпфъпьчкЗИучюшъцк уЗ"
+key = 10
+
+alphabet = "АБВГДЕЁЖЗИКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзиклмнопрстуфхцчшщъыьэюя "
+ciphertext = ""
+
+for symbol in plain_text:
+    if symbol in alphabet:
+        num = alphabet.find(symbol)
+        num = num - key
+
+        if num >= len(alphabet):
+            num = num - len(alphabet)
+
+        ciphertext = ciphertext + alphabet[num]
+
+    else:
+        ciphertext = ciphertext + symbol
+
+print(ciphertext)
 
 # ВОПРОС! Как взломть этот алгоритм?
 
