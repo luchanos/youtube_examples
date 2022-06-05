@@ -1,0 +1,36 @@
+GET _search
+{
+  "query": {
+    "match_all": {}
+  }
+}
+
+get /_cat/health
+
+get /_cat/
+
+get /_cat/indices
+
+delete ahahahahahaha2
+
+put my_shiny_index
+
+put my_shiny_index2/  # регулируем количество шардов у индекса
+{"settings": {
+  "number_of_shards": 5
+}}
+
+get my_shiny_index2  # получить инфо об индексе
+
+delete my_shiny_index2  # удаляем индекс
+
+post my_shiny_index2/_doc  # записываем документы в индекс
+{"lol": "kek5"}
+
+get my_shiny_index2/_search/ # выводим первые документы в индексе
+
+get my_shiny_index2/_doc/rbuw1n8B1-f8L9lcHzb1
+# ищем документ по id
+
+get my_shiny_index2/_search_shards?routing=rbuw1n8B1-f8L9lcHzb1
+# на какой шард полетел документ
