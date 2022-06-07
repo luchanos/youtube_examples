@@ -1,0 +1,34 @@
+# запрашиваем информацию по индексу
+GET my_shiny_index
+
+# запрашиваем информацию по маппингу
+GET my_shiny_index/_mapping
+
+# запрашиваем первые 10 документов в индексе
+GET my_shiny_index/_search
+
+
+# добавляем документ с каким-то новым полем, которого раньше не было
+POST my_shiny_index/_doc
+{
+  "name": "Nikolai",
+  "surname": "Sviridov"
+}
+
+
+# добавляем документ с каким-то новым полем, которого раньше не было
+POST my_shiny_index/_doc
+{
+  "name": "Anna",
+  "surname": "Prozorova",
+  "city": "Los Gigantes"
+}
+
+# удалить документ по id
+DELETE my_shiny_index/_doc/d8oK8H8Bf1B4t17p7q3d
+
+# удалить индекс
+DELETE my_shiny_index
+
+# создать индекс
+PUT my_shiny_index
