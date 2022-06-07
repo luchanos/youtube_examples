@@ -30,5 +30,35 @@ DELETE my_shiny_index/_doc/d8oK8H8Bf1B4t17p7q3d
 # удалить индекс
 DELETE my_shiny_index
 
-# создать индекс
+# создать индекс с динамическим маппингом
 PUT my_shiny_index
+
+# создать индекс со статическим маппингом
+PUT my_shiny_index
+{
+    "mappings" : {
+      "properties" : {
+        "name" : {
+          "type" : "text",
+          "fields" : {
+            "keyword" : {
+              "type" : "keyword",
+              "ignore_above" : 256
+            }
+          }
+        },
+        "surname" : {
+          "type" : "text",
+          "fields" : {
+            "keyword" : {
+              "type" : "keyword",
+              "ignore_above" : 256
+            }
+          }
+        },
+        "rating" : {
+          "type": "integer"
+        }
+      }
+    }
+  }
